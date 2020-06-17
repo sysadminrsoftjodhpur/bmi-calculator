@@ -8,6 +8,7 @@ EXPOSE 4200
 
 # Install and configure `serve`.
 RUN npm install -g serve
+RUN ng serve --host 0.0.0.0
 
 # Copy source code to image
 COPY . .
