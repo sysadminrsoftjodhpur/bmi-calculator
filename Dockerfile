@@ -1,5 +1,5 @@
  # Create image based on official Ubuntu 16.10 image
-    FROM ubuntu:16.10
+    FROM ubuntu
 
     # Create image based on the official Node 7 image from dockerhub
     FROM node:9.4
