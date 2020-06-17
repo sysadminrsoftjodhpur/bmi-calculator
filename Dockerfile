@@ -1,7 +1,4 @@
- # Create image based on official Ubuntu 16.10 image
-    FROM ubuntu
-
-    # Create image based on the official Node 7 image from dockerhub
+# Create image based on the official Node 7 image from dockerhub
     FROM node:9.4
 
     # Create a directory where our app will be placed
