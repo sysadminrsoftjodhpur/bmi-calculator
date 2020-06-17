@@ -1,20 +1,26 @@
-FROM node:9.4
+ # Create image based on official Ubuntu 16.10 image
+    FROM ubuntu:16.10
 
-# Create app directory
-WORKDIR /usr/src/app
+    # Create image based on the official Node 7 image from dockerhub
+    FROM node:9.4
 
-# Expose port for service
-EXPOSE 4200
+    # Create a directory where our app will be placed
+    RUN mkdir -p /usr/src/app/
 
-# Install and configure `serve`.
-RUN npm install -g serve
-RUN ng serve --host 0.0.0.0
+    # Change directory so that our commands run inside this new directory
+    WORKDIR /usr/src/app/angular
 
-# Copy source code to image
-COPY . .
+    # Copy dependency definitions
+    COPY package.json /usr/src/app/
+    
+    # Install dependecies
+    RUN npm install
 
-# Install dependencies
-RUN npm install
+    # Get all the code needed to run the app
+    COPY . /usr/src/app/angular
 
-# Build app and start server from script
-CMD ["/usr/src/app/run"]
+    # Expose the port the app runs in
+    EXPOSE 4200
+
+    # Serve the app
+    CMD ["npm", "start"]
